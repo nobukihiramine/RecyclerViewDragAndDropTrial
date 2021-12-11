@@ -1,5 +1,5 @@
 # RecyclerViewDragAndDropTrial
-RecyclerViewを用いて、リスト表示している項目の「ドラッグアンド移動」「スワイプ削除」を実現する方法。
+RecyclerViewを用いて、リスト表示している項目の「ドラッグ＆ドロップ移動」「スワイプ削除」を実現する方法。
 
 EmptyActivityのプロジェクトを作成し、手を加えたファイルは以下。
 - ItemListAdapterクラスファイルの追加
@@ -7,14 +7,16 @@ EmptyActivityのプロジェクトを作成し、手を加えたファイルは�
 - activity_mainレイアウトファイルの編集
 - listitem_itemレイアウトファイルの追加
 - ic_baseline_delete_32ドローワブルファイルの追加
-- 
+ 
 要点としては、以下。
 - activity_mainレイアウトに、RecyclerViewを設置する
 - listitem_itemレイアウトに、リスト表示の１項目のレイアウトを実装する。
-- ItemListAdapterクラスは、RecyclerView.Adapterクラスの派生クラスとする。
-- ItemListAdapterクラスは、ビューの作成とバインドを担う。ビューの作成とバインド等の処理を実装する。
-- MainActivityクラスでは、アダプターの作成やタッチヘルパーの作成と登録等の処理を実装する。
-- スワイプの際に表示するゴミ箱アイコンは、Vector Asset Studioを通して作成する。
+- ItemListAdapterクラスは、RecyclerView.Adapterクラスの派生クラスとし、リサイクラービューの作成やバインド等の処理を実装する。
+- RecyclerViewを保持するMainActivityクラスでは、アダプターの作成と登録、タッチヘルパーの作成と登録等の処理を実装する。
+- ドラッグ＆ドロップ移動機能は、RecyclerViewを保持するMainActivityクラスのタッチヘルパーの作成の onMove() の実装によって実現される。
+- スワイプ削除機能は、RecyclerViewを保持するMainActivityクラスのタッチヘルパーの作成の onSwiped() の実装によって実現される。
+- スワイプ削除機能のスワイプ時の項目の背景描画は、RecyclerViewを保持するMainActivityクラスのタッチヘルパーの作成の onChildDraw() の実装によって実現される。
+- スワイプ削除機能のスワイプ時の項目の背景描画の際に表示するゴミ箱アイコンは、Vector Asset Studioを利用して作成する。
 
 ## Screenshots : スクリーンショット
 <img src="images/screenshot_anim01.gif" width="240" alt="Screenshot"/>
